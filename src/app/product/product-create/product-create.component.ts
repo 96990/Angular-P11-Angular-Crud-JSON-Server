@@ -11,6 +11,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, map, Observable, of, switchMap } from 'rxjs';
 import { ButtonModule } from 'primeng/button';
+import { Store } from '@ngrx/store';
+import { addProduct, updateProduct } from '../store/product.actions';
 
 @Component({
   selector: 'app-product-create',
@@ -23,9 +25,9 @@ export class ProductCreateComponent {
   product$!: Observable<Object>;
   isEditMode = false;
   message!: string;
-  productId!: number;
+  productId!: string;
   private fb = inject(FormBuilder);
-  private http = inject(HttpClient);
+  private store = inject(Store);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private messageService = inject(MessageService);
@@ -58,7 +60,8 @@ export class ProductCreateComponent {
   ];
 
   ngOnInit() {
-    this.productId = this.productService.productsCount?  Number(this.productService.productsCount) + 1: 1
+    let id = this.productService.productsCount?  Number(this.productService.productsCount) + 1: 1
+    console.log("outside",this.productId, this.productService.productsCount);
     this.route.queryParamMap.pipe().subscribe(params =>{
         const productString = params.get('product');
         if(productString){
@@ -66,13 +69,15 @@ export class ProductCreateComponent {
             const product = JSON.parse(productString);
             this.productForm.patchValue(product);
             this.isEditMode = true;
-            this.productId = product.id;
+            id = product.id;
           }catch(error){
             console.error("error parsing product data",error);
           }
         }
       }
     )
+    this.productId = id.toString();
+    console.log("aflter",this.productId,);
   }
 
   onSubmit() {
@@ -80,23 +85,10 @@ export class ProductCreateComponent {
     this.productForm.patchValue({id: this.productId})
     const productData = this.productForm.value as Product;
     if(!this.isEditMode){
-      this.product$ = this.productService.createProduct(productData);
-      this.message = "Product added successfully!";
+      this.store.dispatch(addProduct({product: productData}));
     }else {
-      this.product$ = this.productService.updateProduct(productData,this.productId);
-      this.message = "Product updated successfully!";
+      this.store.dispatch(updateProduct({product: productData}))
     }
-    this.product$.subscribe({
-      next: () => {
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: this.message });
-        this.productForm.reset();
-        this.router.navigate(['/lists']);
-      },
-      error: (err) => {
-        console.error(err);
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to add product.' });
-      }
-    })
     this.isEditMode = false;
   }
 

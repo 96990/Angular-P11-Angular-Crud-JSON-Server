@@ -1,4 +1,4 @@
-<div *ngIf="product$ | async as product; else notFound" class="p-d-flex p-jc-center">
+<div *ngIf="product() as product; else notFound" class="p-d-flex p-jc-center">
     <p-card class="p-shadow-4 p-p-4 custom-card">
         <ng-container *ngIf="product">
             <div class="p-d-flex p-flex-column p-ai-center">

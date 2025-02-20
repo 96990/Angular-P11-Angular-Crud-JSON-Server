@@ -11,6 +11,10 @@ import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FormsModule } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectAllProducts } from '../store/product.selectors';
+import { deleteProduct, loadProducts } from '../store/product.actions';
 
 @Component({
   selector: 'app-product-list',
@@ -21,9 +25,10 @@ import { FormsModule } from '@angular/forms';
 export class ProductListComponent {
   private productService = inject(ProductService);
   private messageService = inject(MessageService);
+  private store = inject(Store);
   private router = inject(Router);
   cols!: Column[];
-  products!: any;
+  products$!: Observable<Product[]>;
   selectedColumns!: Column[];
 
   ngOnInit() {
@@ -53,42 +58,32 @@ export class ProductListComponent {
       { field: 'brand', header: 'brand' },
       { field: 'price', header: 'price' },
     ];
-    this.productService.getProductsList().subscribe({
-      next: (data) => {
-        this.products = data;
-        this.productService.productsCount = data[data.length-1]?.id;
-        console.log("length",data.length, this.productService.productsCount);
-        this.messageService.add({ severity: 'success', summary: 'Loaded', detail: 'Products loaded successfully!' });
-      },
-      error: (error) => console.log(error),
-   })
-  }
+  //   this.productService.getProductsList().subscribe({
+  //     next: (data) => {
+  //       this.products$ = data;
+  //       this.productService.productsCount = data[data.length-1]?.id;
+  //       console.log("length",data.length, this.productService.productsCount);
+  //       this.messageService.add({ severity: 'success', summary: 'Loaded', detail: 'Products loaded successfully!' });
+  //     },
+  //     error: (error) => console.log(error),
+  //  })
+    this.store.dispatch(loadProducts());
+    this.products$ = this.store.select(selectAllProducts);
 
-  stockSeverity(product: Product) {
-    if (product.stock === 0) return 'danger';
-    else if (product.stock > 0 && product.stock < 10) return 'warn';
-    else return 'success';
   }
 
   showDetails(id: number) {
     this.router.navigate(['/details',id]);
   }
 
-  deleteProduct(id: number) {
+  onDeleteProduct(id: number) {
     // this.router.navigate(['/details',id]);
     if(confirm('Do you want to delete this product?')){
-      this.productService.deleteProduct(id).subscribe({
-        next: () => {
-          this.products = this.products.filter((product: Product) => product.id !== id);
-          this.messageService.add({ severity: 'error', summary: 'Deleted', detail: 'Product deleted successfully!' });
-        },
-        error: (error) => console.log(error),
-      });
+      this.store.dispatch(deleteProduct({ productId: id}));
     }
   }
 
   editProduct(product: Product) {
-    console.log("eidt",product);
     this.router.navigate(['/create'],{queryParams: {product: JSON.stringify(product)}});
   }
 }

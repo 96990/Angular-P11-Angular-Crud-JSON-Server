@@ -10,52 +10,31 @@ import { MessageService } from 'primeng/api';
 })
 export class ProductService{
     id = signal(0);
-    productsCount: number = 0;
+    productsCount: number = 30;
     API_URL = "http://localhost:3000/products";
-    error =  signal([]);
-    private cache: {[id: string]: Observable<Product  | null>} = {}
     private http = inject(HttpClient);
-    private messageService = inject(MessageService);
 
-    getProductDetails(id: number){
-            return this.http.get<Product>(`${this.API_URL}/${id}`,).pipe(
-                catchError((err) => {
-                    this.error.set(err);
-                    console.log(err);
-                    return of(null);
-                })
-            );
+    getProductDetails(id: number): Observable<Product>{
+            return this.http.get<Product>(`${this.API_URL}/${id}`);
     }
-    getProductsList(){
+    getProductsList(): Observable<Product[]>{
         return this.http.get<Product[]>(`${this.API_URL}`).pipe(
-            catchError((err) => {
-                this.error.set(err);
-                console.log(err);
-                return of([]);
+            tap((data) => {
+                this.productsCount = data[data.length-1]?.id;
+                console.log("data",data.length,this.productsCount);
             })
         );
     }
-    createProduct(productData: Product){
-        return this.http.post(this.API_URL, productData).pipe(
+    createProduct(productData: Product): Observable<Product>{
+        return this.http.post<Product>(this.API_URL, productData);
+    }
 
-        );
+    updateProduct(product: Product,id: number): Observable<Product>{
+        return this.http.put<Product>(`${this.API_URL}/${id}`,product);
     }
-    updateProduct(product: Product,id: number){
-        return this.http.put(`${this.API_URL}/${id}`,product).pipe(
-            catchError((err) => {
-                this.error.set(err);
-                console.log(err);
-                return of([]);
-            })
-        );
-    }
-    deleteProduct(id: number){
-        return this.http.delete(`${this.API_URL}/${id}`,).pipe(
-            catchError((err) => {
-                this.error.set(err);
-                console.log(err);
-                return of([]);
-            })
-        );
+
+    deleteProduct(id: number): Observable<void>{
+        console.log("dikunfu",id);
+        return this.http.delete<void>(`${this.API_URL}/${id}`,);
     }
 }

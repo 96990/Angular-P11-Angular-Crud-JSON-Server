@@ -1,105 +1,149 @@
 <div class="p-4">
   <p-toast></p-toast>
-  <h2 class="text-xl font-semibold">{{isEditMode? 'Update': 'Add'}} Product</h2>
-  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="grid grid-cols-2 gap-4 mt-4">
+  <h2 class="text-2xl font-semibold mb-4">{{ isEditMode ? 'Update' : 'Add' }} Product</h2>
 
-    <div class="col-span-2">
-      <label for="title">Title</label>
-      <input pInputText id="title" formControlName="title" class="w-full" />
-      <!-- <small *ngIf="productForm.get.('title')?.invalid && productForm.get.('title')?.touched" class="text-red-500">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="p-fluid">
+   
+    <!-- Title -->
+    <div class="p-field">
+      <label for="title">Title <span class="text-red-500">*</span></label>
+      <input pInputText id="title" formControlName="title" class="p-inputtext" />
+      <small *ngIf="productForm.get('title')?.invalid && productForm.get('title')?.touched" class="p-error">
         Title is required.
-      </small> -->
-    </div>
-
-    <div>
-      <label for="category">Category</label>
-      <input pInputText id="category" formControlName="category" class="w-full" />
-      <!-- <small *ngIf="productForm.get.('category')?.invalid && productForm.get.('category')?.touched"
-        class="text-red-500">
-        Category is required.
-      </small> -->
-    </div>
-
-    <div>
-      <label for="brand">Brand</label>
-      <input pInputText id="brand" formControlName="brand" class="w-full" />
-    </div>
-
-    <div class="col-span-2">
-      <label for="description">Description</label>
-      <textarea pInputTextarea id="description" formControlName="description" rows="3" class="w-full"></textarea>
-      <!-- <small *ngIf="productForm.get.('description')?.invalid && productForm.get('description')?.touched"
-        class="text-red-500">
-        Description is required.
-      </small> -->
-    </div>
-
-    <div>
-      <label for="price">Price (₹)</label>
-      <p-inputNumber id="price" formControlName="price" class="w-full" mode="currency" currency="INR"></p-inputNumber>
-      <small *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched" class="text-red-500">
-        Price must be greater than 0.
       </small>
     </div>
 
-    <div>
-      <label for="discountPercentage">Discount (%)</label>
-      <p-inputNumber id="discountPercentage" formControlName="discountPercentage" class="w-full" [min]="0"
-        [max]="100"></p-inputNumber>
+    <div class="p-grid">
+      <!-- Category -->
+      <div class="p-col-6">
+        <div class="p-field">
+          <label for="category">Category <span class="text-red-500">*</span></label>
+          <input pInputText id="category" formControlName="category" class="p-inputtext" />
+          <small *ngIf="productForm.get('category')?.invalid && productForm.get('category')?.touched" class="p-error">
+            Category is required.
+          </small>
+        </div>
+      </div>
+
+      <!-- Brand -->
+      <div class="p-col-6">
+        <div class="p-field">
+          <label for="brand">Brand</label>
+          <input pInputText id="brand" formControlName="brand" class="p-inputtext" />
+        </div>
+      </div>
     </div>
 
-    <div>
-      <label for="rating">Rating</label>
-      <p-inputNumber id="rating" formControlName="rating" class="w-full" [min]="0" [max]="5"></p-inputNumber>
+    <!-- Description -->
+    <div class="p-field">
+      <label for="description">Description <span class="text-red-500">*</span></label>
+      <textarea pInputTextarea id="description" formControlName="description" rows="3"></textarea>
+      <small *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched" class="p-error">
+        Description is required.
+      </small>
     </div>
 
-    <div>
-      <label for="stock">Stock</label>
-      <p-inputNumber id="stock" formControlName="stock" class="w-full" [min]="1"></p-inputNumber>
+    <div class="p-grid">
+      <!-- Price -->
+      <div class="p-col-6">
+        <div class="p-field">
+          <label for="price">Price (₹) <span class="text-red-500">*</span></label>
+          <p-inputNumber id="price" formControlName="price" mode="currency" currency="INR" class="w-full"></p-inputNumber>
+          <small *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched" class="p-error">
+            Price must be greater than 0.
+          </small>
+        </div>
+      </div>
+
+      <!-- Discount -->
+      <div class="p-col-6">
+        <div class="p-field">
+          <label for="discountPercentage">Discount (%)</label>
+          <p-inputNumber id="discountPercentage" formControlName="discountPercentage" [min]="0" [max]="100"></p-inputNumber>
+        </div>
+      </div>
     </div>
 
-    <div>
-      <label for="sku">SKU</label>
-      <input pInputText id="sku" formControlName="sku" class="w-full" />
+    <div class="p-grid">
+      <!-- Rating -->
+      <div class="p-col-6">
+        <div class="p-field">
+          <label for="rating">Rating</label>
+          <p-inputNumber id="rating" formControlName="rating" [min]="0" [max]="5"></p-inputNumber>
+        </div>
+      </div>
+
+      <!-- Stock -->
+      <div class="p-col-6">
+        <div class="p-field">
+          <label for="stock">Stock</label>
+          <p-inputNumber id="stock" formControlName="stock" [min]="1"></p-inputNumber>
+        </div>
+      </div>
     </div>
 
-    <div>
-      <label for="weight">Weight (kg)</label>
-      <p-inputNumber id="weight" formControlName="weight" class="w-full" [min]="0"></p-inputNumber>
+    <div class="p-grid">
+      <!-- SKU -->
+      <div class="p-col-6">
+        <div class="p-field">
+          <label for="sku">SKU</label>
+          <input pInputText id="sku" formControlName="sku" class="p-inputtext" />
+        </div>
+      </div>
+
+      <!-- Weight -->
+      <div class="p-col-6">
+        <div class="p-field">
+          <label for="weight">Weight (kg)</label>
+          <p-inputNumber id="weight" formControlName="weight" [min]="0"></p-inputNumber>
+        </div>
+      </div>
     </div>
 
-    <div class="col-span-2">
+    <!-- Warranty Information -->
+    <div class="p-field">
       <label for="warrantyInformation">Warranty Information</label>
-      <textarea pInputTextarea id="warrantyInformation" formControlName="warrantyInformation" rows="2"
-        class="w-full"></textarea>
+      <textarea pInputTextarea id="warrantyInformation" formControlName="warrantyInformation" rows="2"></textarea>
     </div>
 
-    <div class="col-span-2">
+    <!-- Shipping Information -->
+    <div class="p-field">
       <label for="shippingInformation">Shipping Information</label>
-      <textarea pInputTextarea id="shippingInformation" formControlName="shippingInformation" rows="2"
-        class="w-full"></textarea>
+      <textarea pInputTextarea id="shippingInformation" formControlName="shippingInformation" rows="2"></textarea>
     </div>
 
+    <!-- Availability Status -->
     <div class="col-span-2">
-      <label for="availabilityStatus">Availability</label>
+      <label for="availabilityStatus">Availability:</label>
       <p-select [options]="availabilityOptions" id="availabilityStatus" formControlName="availabilityStatus"
         optionLabel="label" placeholder="Select Availability" class="w-full" />
+      <small *ngIf="productForm.get('availabilityStatus')?.invalid && productForm.get('availabilityStatus')?.touched" class="text-red-500">
+        Availability should not be empty.
+      </small>
     </div>
 
-    <div>
-      <label for="returnPolicy">Return Policy</label>
-      <input pInputText id="returnPolicy" formControlName="returnPolicy" class="w-full" />
+    <div class="p-grid">
+      <!-- Return Policy -->
+      <div class="p-col-6">
+        <div class="p-field">
+          <label for="returnPolicy">Return Policy</label>
+          <input pInputText id="returnPolicy" formControlName="returnPolicy" class="p-inputtext" />
+        </div>
+      </div>
+
+      <!-- Minimum Order Quantity -->
+      <div class="p-col-6">
+        <div class="p-field">
+          <label for="minimumOrderQuantity">Minimum Order Qty</label>
+          <p-inputNumber id="minimumOrderQuantity" formControlName="minimumOrderQuantity" [min]="1"></p-inputNumber>
+        </div>
+      </div>
     </div>
 
-    <div>
-      <label for="minimumOrderQuantity">Minimum Order Qty</label>
-      <p-inputNumber id="minimumOrderQuantity" formControlName="minimumOrderQuantity" class="w-full"
-        [min]="1"></p-inputNumber>
-    </div>
-
-    <div class="col-span-2">
-      <p-button type="submit" pRipple label="{{isEditMode? 'Update': 'Submit'}}" severity="success" class="w-full" [disabled]="productForm.invalid"  />
-
+    <!-- Submit Button -->
+    <div class="p-field">
+      <p-button type="submit" pRipple label="{{ isEditMode ? 'Update' : 'Submit' }}" severity="success" class="w-full"
+        [disabled]="productForm.invalid"></p-button>
     </div>
 
   </form>

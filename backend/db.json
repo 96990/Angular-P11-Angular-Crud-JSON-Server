@@ -1,10 +1,11 @@
 {
   "products": [
     {
+      "id": "1",
       "title": "Essence Mascara Lash Princess",
       "category": "beauty",
       "description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
-      "price": 91,
+      "price": 9.99,
       "discountPercentage": 7.17,
       "rating": 4.94,
       "stock": 5,
@@ -14,80 +15,98 @@
       "weight": 2,
       "warrantyInformation": "1 month warranty",
       "shippingInformation": "Ships in 1 month",
-      "availabilityStatus": "LOWSTOCK",
+      "availabilityStatus": {
+        "label": "Out of Stock",
+        "value": "OUTOFSTOCK"
+      },
       "returnPolicy": "30 days return policy",
-      "minimumOrderQuantity": 25,
-      "id": "1"
+      "minimumOrderQuantity": 24
     },
     {
       "id": "2",
       "title": "Eyeshadow Palette with Mirror",
-      "description": "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.",
       "category": "beauty",
+      "description": "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.",
       "price": 19.99,
       "discountPercentage": 5.5,
       "rating": 3.28,
       "stock": 44,
+      "tags": "",
       "brand": "Glamour Beauty",
       "sku": "MVCFH27F",
       "weight": 3,
       "warrantyInformation": "1 year warranty",
       "shippingInformation": "Ships in 2 weeks",
-      "availabilityStatus": "INSTOCK",
+      "availabilityStatus": {
+        "label": "In Stock",
+        "value": "INSTOCK"
+      },
       "returnPolicy": "30 days return policy",
       "minimumOrderQuantity": 32
     },
     {
       "id": "3",
       "title": "Powder Canister",
-      "description": "The Powder Canister is a finely milled setting powder designed to set makeup and control shine. With a lightweight and translucent formula, it provides a smooth and matte finish.",
       "category": "beauty",
+      "description": "The Powder Canister is a finely milled setting powder designed to set makeup and control shine. With a lightweight and translucent formula, it provides a smooth and matte finish.",
       "price": 14.99,
       "discountPercentage": 18.14,
       "rating": 3.82,
       "stock": 59,
+      "tags": "",
       "brand": "Velvet Touch",
       "sku": "9EN8WLT2",
       "weight": 8,
       "warrantyInformation": "2 year warranty",
       "shippingInformation": "Ships in 1-2 business days",
-      "availabilityStatus": "INSTOCK",
+      "availabilityStatus": {
+        "label": "Low Stock",
+        "value": "LOWSTOCK"
+      },
       "returnPolicy": "60 days return policy",
       "minimumOrderQuantity": 25
     },
     {
       "id": "4",
       "title": "Red Lipstick",
-      "description": "The Red Lipstick is a classic and bold choice for adding a pop of color to your lips. With a creamy and pigmented formula, it provides a vibrant and long-lasting finish.",
       "category": "beauty",
+      "description": "The Red Lipstick is a classic and bold choice for adding a pop of color to your lips. With a creamy and pigmented formula, it provides a vibrant and long-lasting finish.",
       "price": 12.99,
       "discountPercentage": 19.03,
       "rating": 2.51,
       "stock": 68,
+      "tags": "",
       "brand": "Chic Cosmetics",
       "sku": "O5IF1NTA",
       "weight": 5,
       "warrantyInformation": "Lifetime warranty",
       "shippingInformation": "Ships in 2 weeks",
-      "availabilityStatus": "INSTOCK",
+      "availabilityStatus": {
+        "label": "Low Stock",
+        "value": "LOWSTOCK"
+      },
       "returnPolicy": "90 days return policy",
       "minimumOrderQuantity": 6
     },
     {
       "id": "5",
       "title": "Red Nail Polish",
-      "description": "The Red Nail Polish offers a rich and glossy red hue for vibrant and polished nails. With a quick-drying formula, it provides a salon-quality finish at home.",
       "category": "beauty",
+      "description": "The Red Nail Polish offers a rich and glossy red hue for vibrant and polished nails. With a quick-drying formula, it provides a salon-quality finish at home.",
       "price": 8.99,
       "discountPercentage": 2.46,
       "rating": 3.91,
       "stock": 71,
+      "tags": "",
       "brand": "Nail Couture",
       "sku": "YUIIIP4W",
       "weight": 9,
       "warrantyInformation": "1 year warranty",
       "shippingInformation": "Ships in 1 week",
-      "availabilityStatus": "INSTOCK",
+      "availabilityStatus": {
+        "label": "Low Stock",
+        "value": "LOWSTOCK"
+      },
       "returnPolicy": "No return policy",
       "minimumOrderQuantity": 46
     },
@@ -540,9 +559,31 @@
       "availabilityStatus": "LOWSTOCK",
       "returnPolicy": "7 days return policy",
       "minimumOrderQuantity": 8
+    },
+    {
+      "id": "31",
+      "title": "jfkdlk",
+      "category": "jlfdjlkj",
+      "description": "ljlkfdjl",
+      "price": 333,
+      "discountPercentage": 100,
+      "rating": 5,
+      "stock": 1,
+      "tags": "",
+      "brand": "l",
+      "sku": "dsf",
+      "weight": 33,
+      "warrantyInformation": "dsfafj",
+      "shippingInformation": "kdhfjkh",
+      "availabilityStatus": {
+        "label": "Out of Stock",
+        "value": "OUTOFSTOCK"
+      },
+      "returnPolicy": "dfdf",
+      "minimumOrderQuantity": 1
     }
   ],
-  "total": 194,
+  "total": 30,
   "skip": 0,
   "limit": 30
 }

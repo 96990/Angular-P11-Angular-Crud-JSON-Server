@@ -1,8 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-@import "node_modules/resources/themes/lara-light-blue/theme.css";
-@import "node_modules/primeng/resources/primeng.min.css";
-@import "node_modules/primeicons/primeicons.css";
+@import 'primeng/resources/themes/lara-light-blue/theme.css';
+@import 'primeng/resources/primeng.css';
+@import 'primeicons/primeicons.css';
+
 /* "allowedCommonJsDependencies": [
     "primeng/resources/primeng.css",
     "primeicons/primeicons.css"
   ] */
+.p-field{
+    margin-bottom: 1rem;
+}
+.p-error{
+    color: #e74e3c;
+    font-size: 0.875rem
+}
