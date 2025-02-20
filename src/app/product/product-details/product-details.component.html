@@ -1,0 +1,44 @@
+<div *ngIf="product$ | async as product; else notFound" class="p-d-flex p-jc-center">
+    <p-card class="p-shadow-4 p-p-4 custom-card">
+        <ng-container *ngIf="product">
+            <div class="p-d-flex p-flex-column p-ai-center">
+                <h2 class="p-text-bold">{{ product.title }}</h2>
+                <p class="p-mt-1"><strong>Category:</strong> {{ product.category }}</p>
+                <p class="p-text-secondary"><strong>Price:</strong> ₹{{ product.price }}</p>
+
+                <p-badge [value]="product.stock > 0 ? 'In Stock' : 'Out of Stock'"
+                         [severity]="product.stock > 0 ? 'success' : 'danger'">
+                </p-badge>
+            </div>
+
+            <p-divider></p-divider>
+
+            <div class="p-mt-3">
+                <p><strong>Description:</strong> {{ product.description }}</p>
+                <p><strong>Discount:</strong> {{ product.discountPercentage }}%</p>
+                <p><strong>Rating:</strong> ⭐ {{ product.rating }}/5</p>
+            </div>
+
+            <p-divider></p-divider>
+
+            <div *ngIf="product.tags?.length">
+                <strong>Tags:</strong>
+                <p-chip *ngFor="let tag of product.tags" [label]="tag" class="p-mr-2"></p-chip>
+            </div>
+
+            <p-divider></p-divider>
+
+            <p><strong>Brand:</strong> {{ product.brand }}</p>
+            <p><strong>Weight:</strong> {{ product.weight }} kg</p>
+            <p><strong>Warranty:</strong> {{ product.warrantyInformation || 'N/A' }}</p>
+            <p><strong>Shipping Info:</strong> {{ product.shippingInformation || 'N/A' }}</p>
+            <p><strong>Availability:</strong> {{ product.availabilityStatus }}</p>
+            <p><strong>Return Policy:</strong> {{ product.returnPolicy || 'N/A' }}</p>
+            <p><strong>Minimum Order Quantity:</strong> {{ product.minimumOrderQuantity }}</p>
+        </ng-container>
+    </p-card>
+</div>
+
+<ng-template #notFound>
+    <p>Product not found!</p>
+</ng-template>
