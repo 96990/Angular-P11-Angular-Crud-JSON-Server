@@ -34,17 +34,17 @@ export class AppComponent {
         }
       },
       {
-        label: 'Details',
-        icon: 'pi pi-palette',
-        command: () => {
-          this.router.navigate(['/details']);
-        }
-      },
-      {
         label: 'Create',
         icon: 'pi pi-palette',
         command: () => {
           this.router.navigate(['/create']);
+        }
+      },
+      {
+        label: 'Details',
+        icon: 'pi pi-palette',
+        command: () => {
+          this.router.navigate(['/info']);
         }
       },
     ];

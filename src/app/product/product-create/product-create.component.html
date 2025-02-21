@@ -1,10 +1,10 @@
-<div class="p-4">
+<div class="form-container">
+  <div class="form-card">
   <p-toast></p-toast>
   <h2 class="text-2xl font-semibold mb-4">{{ isEditMode ? 'Update' : 'Add' }} Product</h2>
 
   <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="p-fluid">
    
-    <!-- Title -->
     <div class="p-field">
       <label for="title">Title <span class="text-red-500">*</span></label>
       <input pInputText id="title" formControlName="title" class="p-inputtext" />
@@ -14,7 +14,6 @@
     </div>
 
     <div class="p-grid">
-      <!-- Category -->
       <div class="p-col-6">
         <div class="p-field">
           <label for="category">Category <span class="text-red-500">*</span></label>
@@ -25,16 +24,17 @@
         </div>
       </div>
 
-      <!-- Brand -->
       <div class="p-col-6">
         <div class="p-field">
-          <label for="brand">Brand</label>
+          <label for="brand">Brand <span class="text-red-500">*</span></label>
           <input pInputText id="brand" formControlName="brand" class="p-inputtext" />
+          <small *ngIf="productForm.get('brand')?.invalid && productForm.get('brand')?.touched" class="p-error">
+            Brand is required.
+          </small>
         </div>
       </div>
     </div>
 
-    <!-- Description -->
     <div class="p-field">
       <label for="description">Description <span class="text-red-500">*</span></label>
       <textarea pInputTextarea id="description" formControlName="description" rows="3"></textarea>
@@ -44,7 +44,6 @@
     </div>
 
     <div class="p-grid">
-      <!-- Price -->
       <div class="p-col-6">
         <div class="p-field">
           <label for="price">Price (₹) <span class="text-red-500">*</span></label>
@@ -55,7 +54,6 @@
         </div>
       </div>
 
-      <!-- Discount -->
       <div class="p-col-6">
         <div class="p-field">
           <label for="discountPercentage">Discount (%)</label>
@@ -65,7 +63,6 @@
     </div>
 
     <div class="p-grid">
-      <!-- Rating -->
       <div class="p-col-6">
         <div class="p-field">
           <label for="rating">Rating</label>
@@ -73,7 +70,6 @@
         </div>
       </div>
 
-      <!-- Stock -->
       <div class="p-col-6">
         <div class="p-field">
           <label for="stock">Stock</label>
@@ -83,7 +79,6 @@
     </div>
 
     <div class="p-grid">
-      <!-- SKU -->
       <div class="p-col-6">
         <div class="p-field">
           <label for="sku">SKU</label>
@@ -91,7 +86,6 @@
         </div>
       </div>
 
-      <!-- Weight -->
       <div class="p-col-6">
         <div class="p-field">
           <label for="weight">Weight (kg)</label>
@@ -100,19 +94,16 @@
       </div>
     </div>
 
-    <!-- Warranty Information -->
     <div class="p-field">
       <label for="warrantyInformation">Warranty Information</label>
       <textarea pInputTextarea id="warrantyInformation" formControlName="warrantyInformation" rows="2"></textarea>
     </div>
 
-    <!-- Shipping Information -->
     <div class="p-field">
       <label for="shippingInformation">Shipping Information</label>
       <textarea pInputTextarea id="shippingInformation" formControlName="shippingInformation" rows="2"></textarea>
     </div>
 
-    <!-- Availability Status -->
     <div class="col-span-2">
       <label for="availabilityStatus">Availability:</label>
       <p-select [options]="availabilityOptions" id="availabilityStatus" formControlName="availabilityStatus"
@@ -123,7 +114,6 @@
     </div>
 
     <div class="p-grid">
-      <!-- Return Policy -->
       <div class="p-col-6">
         <div class="p-field">
           <label for="returnPolicy">Return Policy</label>
@@ -131,7 +121,6 @@
         </div>
       </div>
 
-      <!-- Minimum Order Quantity -->
       <div class="p-col-6">
         <div class="p-field">
           <label for="minimumOrderQuantity">Minimum Order Qty</label>
@@ -140,11 +129,11 @@
       </div>
     </div>
 
-    <!-- Submit Button -->
     <div class="p-field">
       <p-button type="submit" pRipple label="{{ isEditMode ? 'Update' : 'Submit' }}" severity="success" class="w-full"
         [disabled]="productForm.invalid"></p-button>
     </div>
 
   </form>
+</div>
 </div>

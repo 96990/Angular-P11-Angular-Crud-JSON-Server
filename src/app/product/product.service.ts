@@ -21,7 +21,6 @@ export class ProductService{
         return this.http.get<Product[]>(`${this.API_URL}`).pipe(
             tap((data) => {
                 this.productsCount = data[data.length-1]?.id;
-                console.log("data",data.length,this.productsCount);
             })
         );
     }
@@ -34,7 +33,6 @@ export class ProductService{
     }
 
     deleteProduct(id: number): Observable<void>{
-        console.log("dikunfu",id);
         return this.http.delete<void>(`${this.API_URL}/${id}`,);
     }
 }

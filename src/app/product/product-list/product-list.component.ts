@@ -15,10 +15,11 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectAllProducts } from '../store/product.selectors';
 import { deleteProduct, loadProducts } from '../store/product.actions';
-
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 @Component({
   selector: 'app-product-list',
-  imports: [CommonModule, FormsModule, TableModule, NgFor, BadgeModule, ToastModule, ButtonModule, MultiSelectModule],
+  imports: [CommonModule, FormsModule, TableModule, NgFor, BadgeModule, ToastModule, ButtonModule, MultiSelectModule, IconFieldModule, InputIconModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
@@ -36,15 +37,14 @@ export class ProductListComponent {
       { field: 'id', header: 'ID' },
       { field: 'title', header: 'Title' },
       { field: 'category', header: 'Category' },
+      { field: 'brand', header: 'Brand' },
       { field: 'price', header: 'price' },
+      { field: 'stock', header: 'Stock' },
       { field: 'discountPercentage', header: 'DiscountPercentage' },
       { field: 'rating', header: 'Rating' },
-      { field: 'stock', header: 'Stock' },
       { field: 'tags', header: 'Tags' },
-      { field: 'brand', header: 'Brand' },
       { field: 'sku', header: 'SKU' },
       { field: 'weight', header: 'Weight' },
-      { field: 'dimensions', header: 'Dimensions' },
       { field: 'warrantyInformation', header: 'WarrantyInformation' },
       { field: 'shippingInformation', header: 'ShippingInformation' },
       { field: 'availabilityStatus', header: 'AvailabilityStatus' },
@@ -56,17 +56,9 @@ export class ProductListComponent {
       { field: 'title', header: 'Title' },
       { field: 'category', header: 'Category' },
       { field: 'brand', header: 'brand' },
+      { field: 'stock', header: 'Stock' },
       { field: 'price', header: 'price' },
     ];
-  //   this.productService.getProductsList().subscribe({
-  //     next: (data) => {
-  //       this.products$ = data;
-  //       this.productService.productsCount = data[data.length-1]?.id;
-  //       console.log("length",data.length, this.productService.productsCount);
-  //       this.messageService.add({ severity: 'success', summary: 'Loaded', detail: 'Products loaded successfully!' });
-  //     },
-  //     error: (error) => console.log(error),
-  //  })
     this.store.dispatch(loadProducts());
     this.products$ = this.store.select(selectAllProducts);
 
@@ -82,7 +74,7 @@ export class ProductListComponent {
       this.store.dispatch(deleteProduct({ productId: id}));
     }
   }
-
+  
   editProduct(product: Product) {
     this.router.navigate(['/create'],{queryParams: {product: JSON.stringify(product)}});
   }

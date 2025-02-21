@@ -43,7 +43,7 @@ export class ProductCreateComponent {
     rating: [0, [Validators.min(0), Validators.max(5)]],
     stock: [1, [Validators.required, Validators.min(1)]],
     tags: [''],
-    brand: [''],
+    brand: ['',Validators.required],
     sku: [''],
     weight: [0, Validators.min(0)],
     warrantyInformation: [''],
@@ -61,7 +61,6 @@ export class ProductCreateComponent {
 
   ngOnInit() {
     let id = this.productService.productsCount?  Number(this.productService.productsCount) + 1: 1
-    console.log("outside",this.productId, this.productService.productsCount);
     this.route.queryParamMap.pipe().subscribe(params =>{
         const productString = params.get('product');
         if(productString){
@@ -77,7 +76,6 @@ export class ProductCreateComponent {
       }
     )
     this.productId = id.toString();
-    console.log("aflter",this.productId,);
   }
 
   onSubmit() {

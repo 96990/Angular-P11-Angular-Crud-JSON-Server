@@ -1,0 +1,102 @@
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+}
+.form-card{
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+  
+}
+.form-card p-inputText,
+.form-card p-inputNumber,
+.form-card p-textarea,
+.form-card p-dropdown,
+.form-card p-select,
+.form-card input,
+.form-card textarea{
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
+label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[pInputText],
+textarea[pInputTextarea],
+p-inputNumber,
+p-select {
+    width: 100%;
+    max-width: 400px;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease-in-out;
+}
+
+input[pInputText]:focus,
+textarea[pInputTextarea]:focus,
+p-inputNumber:focus-within,
+p-select:focus-within {
+    border-color: var(--primary-color, #2196F3);
+    box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
+    outline: none;
+}
+
+small.text-red-500, .p-error {
+    color: #d32f2f; /* PrimeNG error color */
+    font-size: 0.875rem;
+    display: block;
+    margin-top: 4px;
+}
+
+input[pInputText].ng-invalid.ng-touched,
+textarea[pInputTextarea].ng-invalid.ng-touched,
+p-inputNumber.ng-invalid.ng-touched,
+p-select.ng-invalid.ng-touched{
+    border-color: #d32f2f;
+    box-shadow: 0 0 5px ngba(211, 47, 47, 0.5);
+}
+
+p-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+p-button button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.col-span-2 {
+    grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

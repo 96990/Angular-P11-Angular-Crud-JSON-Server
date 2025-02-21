@@ -18,7 +18,7 @@ export interface Product {
     weight: number,
     warrantyInformation: string,
     shippingInformation: string,
-    availabilityStatus: string,
+    availabilityStatus: availabilityStatus,
     returnPolicy: string,
     minimumOrderQuantity: number
   }

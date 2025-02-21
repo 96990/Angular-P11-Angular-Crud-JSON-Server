@@ -559,28 +559,6 @@
       "availabilityStatus": "LOWSTOCK",
       "returnPolicy": "7 days return policy",
       "minimumOrderQuantity": 8
-    },
-    {
-      "id": "31",
-      "title": "jfkdlk",
-      "category": "jlfdjlkj",
-      "description": "ljlkfdjl",
-      "price": 333,
-      "discountPercentage": 100,
-      "rating": 5,
-      "stock": 1,
-      "tags": "",
-      "brand": "l",
-      "sku": "dsf",
-      "weight": 33,
-      "warrantyInformation": "dsfafj",
-      "shippingInformation": "kdhfjkh",
-      "availabilityStatus": {
-        "label": "Out of Stock",
-        "value": "OUTOFSTOCK"
-      },
-      "returnPolicy": "dfdf",
-      "minimumOrderQuantity": 1
     }
   ],
   "total": 30,

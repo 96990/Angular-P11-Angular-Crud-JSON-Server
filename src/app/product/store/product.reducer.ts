@@ -24,10 +24,7 @@ export const productReducer = createReducer(
   on(ProductActions.loadProductsSuccess, (state, { products }) => ({ ...state, products, loading: false })),
   on(ProductActions.loadProductsFailure, (state, { error }) => ({ ...state, error, loading: false })),
 
-  on(ProductActions.addProductSuccess, (state, { product }) => {
-    console.log("addproductreducer",)
-    return { ...state, products: [...state.products, product] }
-  }),
+  on(ProductActions.addProductSuccess, (state, { product }) => ({ ...state, products: [...state.products, product] })),
   on(ProductActions.deleteProductSuccess, (state, { productId }) => ({ ...state, products: state.products.filter(p => p.id !== productId) })),
   on(ProductActions.updateProductSuccess, (state, { product }) => ({
     ...state,

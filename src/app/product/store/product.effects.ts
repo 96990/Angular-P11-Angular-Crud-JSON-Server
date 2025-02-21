@@ -28,7 +28,6 @@ export class ProductEffects {
     addProduct$ = createEffect(() => this.actions$.pipe(
         ofType(ProductActions.addProduct),
         mergeMap(action => this.productService.createProduct(action.product).pipe(
-            tap((res) => console.log("add", res)),
             map((product: Product) => {
                 return ProductActions.addProductSuccess({ product });
             }),
@@ -39,17 +38,8 @@ export class ProductEffects {
     addProductSuccess$ = createEffect(() => this.actions$.pipe(
         ofType(ProductActions.addProductSuccess),
         tap((product) => {
-            console.log("product success", product);
-            // withLatestFrom(this.store.select(selectAllProducts)),
-            // tap(([actions,products]) => console.log("productsadd",products)),
-            // this.productService.getProductsList().pipe(
-            //     map(data => {
-            //         this.productService.productsCount = data[data.length-1].id
-            //         console.log("productscount",this.productService.productsCount);
-            //     })
-            // )
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Product added successfully' });
-            this.router.navigate(['/lists']);
+            setTimeout(() => this.router.navigate(['/lists']), 1000);
         })
     ),
         { dispatch: false }
@@ -59,7 +49,6 @@ export class ProductEffects {
     updateProduct$ = createEffect(() => this.actions$.pipe(
         ofType(ProductActions.updateProduct),
         mergeMap(action => this.productService.updateProduct(action.product, action.product.id).pipe(
-            tap((res) => console.log("update", res)),
             map((product: Product) => {
                 return ProductActions.updateProductSuccess({ product })
             }),
@@ -70,13 +59,8 @@ export class ProductEffects {
     updateProductSuccess$ = createEffect(() => this.actions$.pipe(
         ofType(ProductActions.updateProductSuccess),
         tap(() => {
-            // this.productService.getProductsList().pipe(
-            //     map(data => {
-            //         this.productService.productsCount = data[data.length-1].id
-            //     })
-            // )
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Product updated successfully' });
-            this.router.navigate(['/lists']);
+            setTimeout(() => this.router.navigate(['/lists']), 1000);
         }),
     ),
         { dispatch: false }
@@ -85,7 +69,6 @@ export class ProductEffects {
     deleteProduct$ = createEffect(() => this.actions$.pipe(
         ofType(ProductActions.deleteProduct),
         mergeMap(action => this.productService.deleteProduct(action.productId).pipe(
-            tap((res) => console.log("res", res)),
             map(() => {
                 this.messageService.add({ severity: 'error', summary: 'Deleted', detail: 'Product deleted successfully' });
                 return ProductActions.deleteProductSuccess({ productId: action.productId });
@@ -97,7 +80,6 @@ export class ProductEffects {
     loadProduct$ = createEffect(() => this.actions$.pipe(
         ofType(ProductActions.loadProductDetails),
         withLatestFrom(this.store.select(selectAllProducts)),
-        tap(([actions, products]) => console.log("before", products)),
         mergeMap(([action, products]) => {
             const product = products.find(p => p.id === action.productId);
             if (product) {
@@ -105,12 +87,9 @@ export class ProductEffects {
             } else {
                 return this.productService.getProductDetails(action.productId).pipe(
                     map((product: Product) => ProductActions.loadProductDetailsSuccess({ product })),
-                    tap(product => console.log("tapmapptoduct", product)),
                     catchError(error => of(ProductActions.LoadProductDetailsFailure({ error: error.message })))
                 )
             }
-
         })
-    )
-    )
+    ));
 }
