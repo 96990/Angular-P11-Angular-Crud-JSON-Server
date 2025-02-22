@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { ProductService } from '../product.service';
 import { NgFor } from '@angular/common';
@@ -17,9 +17,10 @@ import { selectAllProducts } from '../store/product.selectors';
 import { deleteProduct, loadProducts } from '../store/product.actions';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
+import { CardModule } from 'primeng/card';
 @Component({
   selector: 'app-product-list',
-  imports: [CommonModule, FormsModule, TableModule, NgFor, BadgeModule, ToastModule, ButtonModule, MultiSelectModule, IconFieldModule, InputIconModule],
+  imports: [CommonModule, FormsModule, TableModule, NgIf, BadgeModule, ToastModule, ButtonModule, MultiSelectModule, IconFieldModule, InputIconModule, CardModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
@@ -69,13 +70,16 @@ export class ProductListComponent {
   }
 
   onDeleteProduct(id: number) {
-    // this.router.navigate(['/details',id]);
     if(confirm('Do you want to delete this product?')){
       this.store.dispatch(deleteProduct({ productId: id}));
     }
   }
-  
+
   editProduct(product: Product) {
     this.router.navigate(['/create'],{queryParams: {product: JSON.stringify(product)}});
+  }
+
+  navigate(){
+    this.router.navigate(['/home'])
   }
 }

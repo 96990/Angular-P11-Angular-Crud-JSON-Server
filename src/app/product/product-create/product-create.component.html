@@ -11,6 +11,9 @@
       <small *ngIf="productForm.get('title')?.invalid && productForm.get('title')?.touched" class="p-error">
         Title is required.
       </small>
+      <small *ngIf="productForm.get('title')?.errors?.['xssDetected']" class="text-red-500">
+        Invalid input detected!
+      </small>
     </div>
 
     <div class="p-grid">
@@ -20,6 +23,9 @@
           <input pInputText id="category" formControlName="category" class="p-inputtext" />
           <small *ngIf="productForm.get('category')?.invalid && productForm.get('category')?.touched" class="p-error">
             Category is required.
+          </small>
+          <small *ngIf="productForm.get('category')?.errors?.['xssDetected']" class="text-red-500">
+            Invalid input detected!
           </small>
         </div>
       </div>
@@ -31,6 +37,9 @@
           <small *ngIf="productForm.get('brand')?.invalid && productForm.get('brand')?.touched" class="p-error">
             Brand is required.
           </small>
+          <small *ngIf="productForm.get('brand')?.errors?.['xssDetected']" class="text-red-500">
+            Invalid input detected!
+          </small>
         </div>
       </div>
     </div>
@@ -40,6 +49,9 @@
       <textarea pInputTextarea id="description" formControlName="description" rows="3"></textarea>
       <small *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched" class="p-error">
         Description is required.
+      </small>
+      <small *ngIf="productForm.get('description')?.errors?.['xssDetected']" class="text-red-500">
+        Invalid input detected!
       </small>
     </div>
 
@@ -84,6 +96,9 @@
           <label for="sku">SKU</label>
           <input pInputText id="sku" formControlName="sku" class="p-inputtext" />
         </div>
+        <small *ngIf="productForm.get('sku')?.errors?.['xssDetected']" class="text-red-500">
+          Invalid input detected!
+        </small>
       </div>
 
       <div class="p-col-6">
@@ -97,11 +112,17 @@
     <div class="p-field">
       <label for="warrantyInformation">Warranty Information</label>
       <textarea pInputTextarea id="warrantyInformation" formControlName="warrantyInformation" rows="2"></textarea>
+      <small *ngIf="productForm.get('warrantyInformation')?.errors?.['xssDetected']" class="text-red-500">
+        Invalid input detected!
+      </small>
     </div>
 
     <div class="p-field">
       <label for="shippingInformation">Shipping Information</label>
       <textarea pInputTextarea id="shippingInformation" formControlName="shippingInformation" rows="2"></textarea>
+      <small *ngIf="productForm.get('shippingInformation')?.errors?.['xssDetected']" class="text-red-500">
+        Invalid input detected!
+      </small>
     </div>
 
     <div class="col-span-2">
@@ -118,6 +139,9 @@
         <div class="p-field">
           <label for="returnPolicy">Return Policy</label>
           <input pInputText id="returnPolicy" formControlName="returnPolicy" class="p-inputtext" />
+          <small *ngIf="productForm.get('returnPolicy')?.errors?.['xssDetected']" class="text-red-500">
+            Invalid input detected!
+          </small>
         </div>
       </div>
 

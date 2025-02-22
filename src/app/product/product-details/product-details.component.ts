@@ -1,7 +1,7 @@
 import { Component, ElementRef, inject, OnDestroy, OnInit, signal, viewChild } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, map, Observable, of, Subscription, switchMap, tap } from 'rxjs';
+import { map, Subscription, switchMap, tap } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { CardModule } from 'primeng/card';
 import { BadgeModule } from 'primeng/badge';
@@ -37,10 +37,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy{
     );
   }
 
-  onDeleteProduct() {
-
-  }
-  
   navigate(){
     this.router.navigate(['/info']);
   }

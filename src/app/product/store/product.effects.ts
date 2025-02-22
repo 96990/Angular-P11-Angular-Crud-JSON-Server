@@ -21,7 +21,10 @@ export class ProductEffects {
         ofType(ProductActions.loadProducts),
         mergeMap(() => this.productService.getProductsList().pipe(
             map((products: Product[]) => ProductActions.loadProductsSuccess({ products })),
-            catchError(error => of(ProductActions.loadProductsFailure({ error: error.message })))
+            catchError(error => {
+                this.showErrorToast("failed to load products");
+                return of(ProductActions.loadProductsFailure({ error: error.message }))
+            })
         ))
     ));
 
@@ -31,7 +34,10 @@ export class ProductEffects {
             map((product: Product) => {
                 return ProductActions.addProductSuccess({ product });
             }),
-            catchError(error => of(ProductActions.addProductFailure({ error: error.message })))
+            catchError(error => {
+                this.showErrorToast("failed to add product");
+                return of(ProductActions.addProductFailure({ error: error.message }))
+            })
         ))
     ));
 
@@ -52,7 +58,10 @@ export class ProductEffects {
             map((product: Product) => {
                 return ProductActions.updateProductSuccess({ product })
             }),
-            catchError(error => of(ProductActions.updateProductFailure({ error: error.message })))
+            catchError(error => {
+                this.showErrorToast("failed to update product");
+                return of(ProductActions.updateProductFailure({ error: error.message }))
+            })
         ))
     ));
 
@@ -73,7 +82,10 @@ export class ProductEffects {
                 this.messageService.add({ severity: 'error', summary: 'Deleted', detail: 'Product deleted successfully' });
                 return ProductActions.deleteProductSuccess({ productId: action.productId });
             }),
-            catchError(error => of(ProductActions.deleteProductFailure({ error: error.message })))
+            catchError(error => {
+                this.showErrorToast("failed to delete product");
+                return of(ProductActions.deleteProductFailure({ error: error.message }))
+            })
         ))
     ));
 
@@ -87,9 +99,16 @@ export class ProductEffects {
             } else {
                 return this.productService.getProductDetails(action.productId).pipe(
                     map((product: Product) => ProductActions.loadProductDetailsSuccess({ product })),
-                    catchError(error => of(ProductActions.LoadProductDetailsFailure({ error: error.message })))
+                    catchError(error => {
+                        this.showErrorToast("failed to load product");
+                        return of(ProductActions.LoadProductDetailsFailure({ error: error.message }))
+                    })
                 )
             }
         })
     ));
+
+    private showErrorToast(message: string){
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: message });
+    }
 }
