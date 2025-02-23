@@ -47,6 +47,13 @@ export class AppComponent {
           this.router.navigate(['/info']);
         }
       },
+      {
+        label: 'Login',
+        icon: 'pi pi-palette',
+        command: () => {
+          this.router.navigate(['/login']);
+        }
+      },
     ];
   }
 }

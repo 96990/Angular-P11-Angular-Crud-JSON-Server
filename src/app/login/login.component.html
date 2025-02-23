@@ -1,0 +1,16 @@
+<div class="card flex justify-center">
+    <div class="flex flex-col gap-4">
+        <p-message severity="error" *ngIf="false" icon="pi pi-times-circle" styleClass="mb-2">Invalid Credentials</p-message>
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+            <div class="flex flex-col gap-1">
+                <label for="username">UserName</label>
+                <input pInputText placeholder="Username" name="username" ngModel />
+            </div>
+            <div class="flex flex-col gap-1">
+                <label for="password">PassWord</label>
+                <input pInputText placeholder="Password" name="passsword" ngModel />
+            </div>
+            <p-button type="submit" label="Submit" severity="success" />
+        </form>
+    </div>
+</div>
