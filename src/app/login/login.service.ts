@@ -1,7 +1,9 @@
-import { Injectable } '@anglar/core';
+import { HttpClient } from '@angular/common/http'
+import { inject, Injectable } from '@angular/core'
+
 @Injectable({
-    providenIn: 'root'
+    providedIn: 'root'
 })
 export class LoginService{
-
+    private http = inject(HttpClient);
 }

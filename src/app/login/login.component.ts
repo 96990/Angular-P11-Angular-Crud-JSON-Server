@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MessageModule } from 'primeng/message';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import { Form, FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ import { NgIf } from '@angular/common';
 })
 export class LoginComponent {
 
-  onSubmit(form: Form) {
-    console.log(form);
+  private loginService = inject(LoginService);
+  onSubmit(form: NgForm) {
+    console.log(form.value);
   }
 }
