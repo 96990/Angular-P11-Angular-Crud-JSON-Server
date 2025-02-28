@@ -564,11 +564,11 @@
   "total": 30,
   "skip": 0,
   "limit": 30,
-  "users":[
+  "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "abhi",
-      "password": "abhi123"
+      "password": "abhi@123"
     }
   ]
 }
