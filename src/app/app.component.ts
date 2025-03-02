@@ -1,59 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterOutlet } from '@angular/router';
-import { MenuItem } from 'primeng/api';
-import { Menubar } from 'primeng/menubar';
-import { MenubarModule } from 'primeng/menubar';
+import { CardModule } from 'primeng/card';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MenubarModule],
+  imports: [CardModule, RouterOutlet, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'Techwarelab';
-  items: MenuItem[] | undefined;
 
-  constructor(private router: Router) { }
-
-  ngOnInit() {
-    this.items = [
-      {
-        label: 'Home',
-        icon: 'pi pi-palette',
-        command: () => {
-          this.router.navigate(['/']);
-        }
-      },
-      {
-        label: 'Lists',
-        icon: 'pi pi-palette',
-        command: () => {
-          this.router.navigate(['/lists']);
-        }
-      },
-      {
-        label: 'Create',
-        icon: 'pi pi-palette',
-        command: () => {
-          this.router.navigate(['/create']);
-        }
-      },
-      {
-        label: 'Details',
-        icon: 'pi pi-palette',
-        command: () => {
-          this.router.navigate(['/info']);
-        }
-      },
-      {
-        label: 'Login',
-        icon: 'pi pi-palette',
-        command: () => {
-          this.router.navigate(['/login']);
-        }
-      },
-    ];
-  }
 }

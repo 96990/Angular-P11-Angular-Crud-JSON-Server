@@ -1,6 +1,13 @@
-<h3>Techwarelab Assessment</h3>
-<div class="card">
-  <p-menubar [model]="items"></p-menubar>
+<div class="p-d-flex p-jc-center">
+  <p-card class="p-shadow-4 p-p-4 custom-card">
+      <ng-container>
+          <div class="p-d-flex p-flex-column p-ai-center">
+              <h2 class="p-text-bold">Welcome</h2>
+              <p class="p-mt-1"><strong>Name:</strong>ABHIJITH K J</p>
+              <p class="p-text-secondary">This is a frontend application build on top of Angular 19 and JSON Web Server.</p>
+              <p class="p-text-secondary">Please <span><a [routerLink]="'/login'">login</a></span> or <span><a [routerLink]="'/signup'">signup</a></span> to view the details.</p>
+            </div>
+        </ng-container>
+    </p-card>
 </div>
-
 <router-outlet></router-outlet>
