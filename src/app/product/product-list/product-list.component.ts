@@ -5,7 +5,7 @@ import { ProductService } from '../product.service';
 import { NgFor } from '@angular/common';
 import { Column, Product } from '../product.model';
 import { BadgeModule } from 'primeng/badge';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
@@ -27,6 +27,7 @@ import { CardModule } from 'primeng/card';
 export class ProductListComponent {
   private productService = inject(ProductService);
   private messageService = inject(MessageService);
+  private route = inject(ActivatedRoute);
   private store = inject(Store);
   private router = inject(Router);
   cols!: Column[];

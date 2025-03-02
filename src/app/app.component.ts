@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { Menubar } from 'primeng/menubar';
 import { MenubarModule } from 'primeng/menubar';
@@ -15,7 +15,7 @@ export class AppComponent {
   title = 'Techwarelab';
   items: MenuItem[] | undefined;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.items = [
@@ -23,14 +23,14 @@ export class AppComponent {
         label: 'Home',
         icon: 'pi pi-palette',
         command: () => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/products']);
         }
       },
       {
         label: 'Lists',
         icon: 'pi pi-palette',
         command: () => {
-          this.router.navigate(['/lists']);
+          this.router.navigate(['/products/lists']);
         }
       },
       {
