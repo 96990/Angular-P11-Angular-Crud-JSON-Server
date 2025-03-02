@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { InputNumberModule } from 'primeng/inputnumber';
@@ -27,9 +27,10 @@ import { FormsModule } from '@angular/forms';
 export class ProductInfoComponent {
   id!: number;
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
   navigate() {
     if (this.id) {
-      this.router.navigate(['/details', this.id])
+      this.router.navigate(['/products/details', this.id])
     }
   }
 }
