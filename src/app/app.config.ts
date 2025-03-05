@@ -5,6 +5,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { providePrimeNG } from 'primeng/config';
 import { MessageService } from 'primeng/api';
 import Aura from '@primeng/themes/aura';
+import { provideStore } from "@ngrx/store";
+import { productReducer } from "./product/store/product.reducer";
+import { provideEffects } from "@ngrx/effects";
+import { ProductEffects } from "./product/store/product.effects";
 
 import { routes } from './app.routes';
 
@@ -20,6 +24,8 @@ export const appConfig: ApplicationConfig = {
       }
     }),
     MessageService,
+    provideStore({ products: productReducer }),
+    provideEffects([ProductEffects])
   ],
 
 };
