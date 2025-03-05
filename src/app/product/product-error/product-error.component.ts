@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 
@@ -22,9 +22,10 @@ import { CardModule } from 'primeng/card';
   `,
 })
 export class ProductErrorComponent {
-  private router = inject(Router)
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
 
   navigate(){
-    this.router.navigate(['/lists']);
+    this.router.navigate(['products','lists']);
   }
 }

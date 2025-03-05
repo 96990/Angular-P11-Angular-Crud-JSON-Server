@@ -29,7 +29,7 @@ export class LoginComponent {
     this.loginService.login(this.user).subscribe(user =>{
       if(user){
         this.msgService.add({ severity: 'success', summary: 'Success', detail: 'Login Successful' });
-        this.router.navigate(['/products']);
+        this.router.navigate(['products','lists']);
       }else{
         this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Invalid Credentials' });
       }

@@ -20,31 +20,24 @@ export class ProductComponent {
   ngOnInit() {
     this.items = [
       {
-        label: 'Home',
+        label: 'Products',
         icon: 'pi pi-palette',
         command: () => {
-          this.router.navigate(['/products']);
-        }
-      },
-      {
-        label: 'Lists',
-        icon: 'pi pi-palette',
-        command: () => {
-          this.router.navigate([{ outlets: { sidebar: ['products','lists'] } }]);
+          this.router.navigate(['lists'], { relativeTo: this.route });
         }
       },
       {
         label: 'Create',
         icon: 'pi pi-palette',
         command: () => {
-          this.router.navigate([{ outlets: { sidebar: ['products','create'] } }]);
+          this.router.navigate(['create'], { relativeTo: this.route });
         }
       },
       {
         label: 'Details',
         icon: 'pi pi-palette',
         command: () => {
-          this.router.navigate([{ outlets: { sidebar: ['info'] } }]);
+          this.router.navigate(['info'], { relativeTo: this.route });
         }
       },
     ];
