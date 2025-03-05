@@ -1,16 +1,4 @@
-
-<div *ngIf="value as product; else notFound" class="p-d-flex p-jc-center">
-    <p-card class="p-shadow-4 p-p-4 custom-card">
-        <ng-container *ngIf="product">
-            <div class="p-d-flex p-flex-column p-ai-center">
-                <h2 class="p-text-bold">Welcome to Techware lab Assessment</h2>
-                <p class="p-mt-1"><strong>Name:</strong>ABHIJITH K J</p>
-                <p class="p-text-secondary"><strong>Company: </strong>RM INDIA</p>
-            </div>
-        </ng-container>
-    </p-card>
-</div>
-
-<ng-template #notFound>
-    <h3>Welcome to Techware lab Assessment</h3>
-</ng-template>
+<div class="card">
+    <p-menubar [model]="items"></p-menubar>
+  </div>
+  
