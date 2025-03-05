@@ -31,14 +31,14 @@ export class ProductDetailsComponent implements OnInit, OnDestroy{
     this.subscriptions.add(
       this.route.paramMap.pipe(
         map(params => Number(params.get('id'))),
-        tap(id => this.store.dispatch(ProductActions.loadProductDetails({ productId: id}))),
+        tap(id => {console.log("idd",id); return this.store.dispatch(ProductActions.loadProductDetails({ productId: id}))}),
         switchMap(id => this.store.select(selectSelectedProduct)),
       ).subscribe(product => this.product.set(product))
     );
   }
 
   navigate(){
-    this.router.navigate(['/info']);
+    this.router.navigate(['info'], {relativeTo: this.route});
   }
   ngOnDestroy() {
     this.subscriptions.unsubscribe();

@@ -67,7 +67,7 @@ export class ProductListComponent {
   }
 
   showDetails(id: number) {
-    this.router.navigate(['/details',id]);
+    this.router.navigate(['products','details', id], );
   }
 
   onDeleteProduct(id: number) {
@@ -77,10 +77,10 @@ export class ProductListComponent {
   }
 
   editProduct(product: Product) {
-    this.router.navigate(['/create'],{queryParams: {product: JSON.stringify(product)}});
+    this.router.navigate(['products','create'],{queryParams: {product: JSON.stringify(product)}});
   }
 
   navigate(){
-    this.router.navigate(['/home'])
+    this.router.navigate(['products','lists'])
   }
 }
