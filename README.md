@@ -14,7 +14,7 @@ Once the server is running, open your browser and navigate to `http://localhost:
 ## to up the JSON Server
     goto cd backend
 ````bash
-    json-server --watch db.json
+    json-server --watch db.json 
 ````
 Once the server is running, open your browser and navigate to `http://localhost:3000/`. The application endpoint we can use there to see the data.
 
