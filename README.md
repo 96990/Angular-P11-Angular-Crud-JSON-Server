@@ -13,11 +13,18 @@ Once the server is running, open your browser and navigate to `http://localhost:
 
 ## to up the JSON Server
     goto cd backend
-````
+````bash
     json-server --watch db.json
-`````
+````
 Once the server is running, open your browser and navigate to `http://localhost:3000/`. The application endpoint we can use there to see the data.
 
+## JSON Server Auth
+
+```bash
+    installation    
+        npm install json-server-auth
+```
+        
 ## Code scaffolding
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
