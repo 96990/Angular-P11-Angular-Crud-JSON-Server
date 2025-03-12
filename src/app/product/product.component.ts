@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
@@ -8,7 +7,7 @@ import { MenubarModule } from 'primeng/menubar';
 
 @Component({
   selector: 'app-product',
-  imports: [NgIf, CardModule, MenubarModule, Menubar, RouterOutlet],
+  imports: [CardModule, MenubarModule, Menubar, RouterOutlet],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
