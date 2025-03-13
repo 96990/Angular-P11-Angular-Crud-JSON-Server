@@ -17,16 +17,14 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  user: userDetails={
-    username: '',
-    password: ''
-  };
+  username = '';
+  password = '';
   private msgService = inject(MessageService);
   private loginService = inject(LoginService);
   private router = inject(Router);
   onSubmit(form: NgForm) {
-    console.log("dfd0",form.value, this.user);
-    this.loginService.login(this.user).subscribe(user =>{
+    console.log("dfd0",form.value, this.username, this.password);
+    this.loginService.login(this.username, this.password).subscribe(user =>{
       if(user){
         this.msgService.add({ severity: 'success', summary: 'Success', detail: 'Login Successful' });
         this.router.navigate(['products','lists']);
