@@ -41,7 +41,7 @@ const verifyToken = (req, res, next) => {
 server.post("/login", (req, res) => {
   const {username, password} = req.body;
   const users = getUserDb();
-
+  console.log("backend",username,password)
   const user = users.find((user) => user.username == username && user.password == password);
 
   if(!user){

@@ -18,7 +18,7 @@ export class LoginService{
     private http = inject(HttpClient);
 
     login(username: string, password: string){
-        return this.http.get<{accessToken: string, user: any}>(this.API_URL, {username, password}).pipe(
+        return this.http.post<{accessToken: string, user: any}>(this.API_URL, {username, password}).pipe(
             tap(res=> {
                 if(res.accessToken){
                     localStorage.setItem(this.tokenKey, res.accessToken);
