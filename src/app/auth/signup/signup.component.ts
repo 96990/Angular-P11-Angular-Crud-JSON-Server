@@ -1,9 +1,10 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Password } from 'primeng/password';
 @Component({
   selector: 'app-signup',
-  imports: [],
+  imports: [NgIf],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
