@@ -23,7 +23,6 @@ export class LoginComponent {
   private loginService = inject(LoginService);
   private router = inject(Router);
   onSubmit(form: NgForm) {
-    console.log("dfd0",form.value, this.username, this.password);
     this.loginService.login(this.username, this.password).subscribe(user =>{
       if(user){
         this.msgService.add({ severity: 'success', summary: 'Success', detail: 'Login Successful' });
