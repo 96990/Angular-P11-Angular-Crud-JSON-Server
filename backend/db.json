@@ -568,7 +568,9 @@
     {
       "id": "1",
       "username": "abhi",
-      "password": "abhi@123"
+      "password": "abhi@123",
+      "role": "admin"
     }
-  ]
+  ],
+  "loggedIn": ""
 }
